@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Thymeleaf Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <header>Login Form</header>
+    <form action="/auth/ad" method="post">
+        <div class="input-field">
+            <input type="text" name="empno" value="218076" required>
+        </div>
+        <div class="input-field">
+            <input class="pswrd" type="password" name="password" value="dkdk184511" required>
+        </div>
+        <div class="button">
+            <div class="inner">
+            </div>
+            <input type="submit" value="LOGIN" />
+        </div>
+    </form>
+</div>
+</body>
+</html>

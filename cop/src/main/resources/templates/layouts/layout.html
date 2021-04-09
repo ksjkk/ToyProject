@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html   lang="ko"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <th:block th:replace="fragments/common/meta :: meta" ></th:block>
+    <title>COP</title>
+    <th:block th:replace="fragments/common/css :: css" ></th:block>
+</head>
+<body>
+
+<div class="page-wrapper compact-wrapper" id="pageWrapper">
+    <div th:replace="layouts/header :: headerFragment"></div>
+    <div class="page-body-wrapper">
+        <div th:replace="layouts/navigator :: navFragment"></div>
+        <div class="page-body">
+            <th:block layout:fragment="script"></th:block>
+            <div layout:fragment="content"></div>
+        </div>
+        <footer th:replace="layouts/footer :: footerFragment"></footer>
+    </div>
+</div>
+<th:block th:replace="fragments/common/script :: script" ></th:block>
+
+
+
+</body>
+</html>

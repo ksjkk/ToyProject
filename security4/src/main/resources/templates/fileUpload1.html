@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>file upload</title>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+		function submit() {
+			var formData = new FormData();
+			formData.append('msg', $('#msg').val());
+			var files = $('#files')[0].files;
+			for (var i = 0; i < files.length; ++i) {
+				console.log(files[i]);
+				formData.append('files', files[i]);
+			}
+			$.ajax({
+				url: '/api/files',
+				method: 'POST',
+				processData: false,
+				contentType: false,
+				data: formData,
+				success: function(d) {
+					console.log(d);
+				},
+				error: function(e){
+				    console.log(e);
+				}
+			});
+		}
+	</script>
+</head>
+
+<body>
+Msg: <input id="msg" type="text">
+<input id="files" type="file" multiple>
+<button onclick="submit()">Submit</button>
+</body>
+</html>

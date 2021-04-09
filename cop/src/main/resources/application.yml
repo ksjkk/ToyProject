@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@172.16.17.132:1540/IDAPIDB
+    username: APPSIF
+    password: ISAPPLE
+    sql-script-encoding: UTF-8
+    continue-on-error: true
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    database: oracle
+    properties:
+      hibernate:
+        format_sql: true
+
+  thymeleaf:
+    cache: false
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true

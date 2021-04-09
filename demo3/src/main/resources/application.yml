@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@172.16.17.132:1540/IDAPIDB
+    username: APPSIF
+    password: ISAPPLE
+    sql-script-encoding: UTF-8
+    continue-on-error: true
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    database: oracle
+
+jwt:
+  header: Authorization
+  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-validity-in-seconds: 43200  #12hours
+
+server:
+  port: 8090
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/layout}"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- hello.html 고유 CSS 추가 -->
+<th:block layout:fragment="css"></th:block>
+
+<!-- hello.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script>
+    </script>
+</th:block>
+<body>
+<h1>index</h1>
+<div layout:fragment="content">
+<!--    <th:block sec:authorize="isAuthenticated()">-->
+<!--        <span th:text="|${userInfo.displayName} ${userInfo.jikweeNm}님|"></span>-->
+<!--    </th:block>-->
+
+</div>
+</body>
+</html>
