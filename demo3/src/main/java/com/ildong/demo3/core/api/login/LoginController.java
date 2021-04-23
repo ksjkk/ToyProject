@@ -29,7 +29,7 @@ import javax.validation.Valid;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class LoginController {
 
     private final static Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -44,15 +44,16 @@ public class LoginController {
         this.empService = empService;
     }
 
-    @PostMapping("/auth/valid")
+    @PostMapping("/auth/authenticate")
     public Emp validationToken(HttpServletRequest request){
         String jwt = request.getHeader(JwtFilter.AUTHORIZATION_HEADER).substring(7);
         Authentication authentication = jwtProvider.getAuthentication(jwt);
+        // authentication.getName() 과 사번을 던져서 일치하면 ㅇㅋ 하는걸로 합시다
         return empService.getUserWithAuthorities(authentication.getName()).get();
     }
 
-    @PostMapping("/auth/authenticate")
-    public ResponseEntity<String> authorize(@Valid @RequestBody LoginDto loginDto, HttpServletResponse response) throws Exception {
+    @PostMapping("/auth/login")
+    public Map<String,Object> authorize(@Valid @RequestBody LoginDto loginDto, HttpServletResponse response) throws Exception {
 
         AuthService authService = new AuthService();
         if(!authService.adLogin(loginDto.getUsername(),loginDto.getPassword())){
@@ -70,7 +71,10 @@ public class LoginController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
-        return new ResponseEntity<>(jwt, httpHeaders, HttpStatus.OK);
+        Map<String,Object> returnMap = new HashMap<String,Object>();
+        returnMap.put("jwt",jwt);
+        returnMap.put("userInfo",emp);
+        return returnMap;
     }
 
     @PostMapping("/auth/logout")

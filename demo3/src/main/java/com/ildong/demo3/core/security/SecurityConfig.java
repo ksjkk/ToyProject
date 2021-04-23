@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/favicon.ico","/error","/api/auth/authenticate");
+        web.ignoring().antMatchers("/favicon.ico","/api/v1/auth/login");
     }
 
     @Override
@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
 
             .logout()
-                .logoutUrl("/api/auth/logout")
+                .logoutUrl("/api/v1/auth/logout")
                 .clearAuthentication(true)
         ;
     }
