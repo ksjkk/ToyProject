@@ -220,8 +220,10 @@ public class QuerydslBasicTest {
         for (Tuple tuple : result) {
             System.out.println("tuple = " + tuple);
         }
-
         System.out.println("==============================");
+
+        em.flush();
+        em.clear();
         System.out.println(result.get(2).get(member).getTeam());
         System.out.println(result.get(2).get(team));
         assertThat(result.get(2).get(member).getTeam().getClass()).isEqualTo(Team.class);
